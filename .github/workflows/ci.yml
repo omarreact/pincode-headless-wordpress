@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - run: npm install --no-audit --no-fund
       - run: npm run verify
+      - name: Production Next.js build
+        run: npm run build
       - name: Validate WordPress PHP syntax
         run: |
           php -l wordpress/mu-plugins/headless-vercel-bridge.php
