@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import CloudinaryImage from '@/components/CloudinaryImage';
 import GutenbergContent from '@/components/GutenbergContent';
 import type { WPContentNode } from '@/types/wordpress';
@@ -14,7 +15,7 @@ export default function Article({ post, isPreview = false }: ArticleProps) {
       {isPreview && (
         <div className="mb-8 flex items-center justify-between gap-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm font-medium text-amber-950">
           <span>Private editorial preview — not indexed</span>
-          <a href="/api/exit-preview" className="underline">Exit preview</a>
+          <Link href="/api/exit-preview" className="underline">Exit preview</Link>
         </div>
       )}
       <header>
