@@ -17,6 +17,8 @@ jobs:
       - run: npm install --no-audit --no-fund
       - run: npm run verify
       - name: Production Next.js build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://pincode-headless-wordpress.invalid
         run: npm run build
       - name: Validate WordPress PHP syntax
         run: |
