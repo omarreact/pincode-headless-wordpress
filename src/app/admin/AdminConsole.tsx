@@ -58,7 +58,7 @@ export default function AdminConsole({ ready, signedIn, accountName }: {
     if (failure?.status === 'rejected') setError(failure.reason instanceof Error ? failure.reason.message : 'CMS connection failed');
     setLoading(false);
   }, []);
-  useEffect(() => { if (signedIn) void reload(); }, [signedIn, reload]);
+  useEffect(() => { if (signedIn) void Promise.resolve().then(reload); }, [signedIn, reload]);
 
   async function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setError('');
