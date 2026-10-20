@@ -23,4 +23,5 @@ jobs:
       - name: Validate WordPress PHP syntax
         run: |
           php -l wordpress/mu-plugins/headless-vercel-bridge.php
+          php -l wordpress/mu-plugins/pincode-control-api.php
           php -l wordpress/wp-config.example.php

@@ -1,3 +1,7 @@
+# WordPress control dashboard
+
+Next.js /admin supports WordPress administrator Application Password login, page management, actual theme/plugin inventory, and staging-only activation after real CMS configuration. See [WordPress setup and login instructions](docs/ADMIN_AND_WORDPRESS_SETUP.md). No PHP CMS is bundled into the Vercel application.
+
 # PINCODE IT Headless WordPress — Independent Project
 
 **Independent repository:** `omarreact/pincode-headless-wordpress`. This project does not alter the existing `omarreact/pincode` source, its Vercel configuration, or its production domain.

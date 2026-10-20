@@ -1,0 +1,37 @@
+# Local development STAGING only. Never expose this stack directly to the internet.
+# Set WP_DB_PASSWORD and WP_DB_ROOT_PASSWORD in a gitignored .env file.
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: ${WP_DB_PASSWORD:?Set WP_DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD:?Set WP_DB_ROOT_PASSWORD}
+    volumes:
+      - wp_database:/var/lib/mysql
+    networks: [wpnet]
+  wordpress:
+    image: wordpress:php8.3-apache
+    depends_on: [db]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:?Set WP_DB_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'staging');
+        define('PINCODE_ENABLE_STAGING_MANAGEMENT', true);
+    volumes:
+      - wp_files:/var/www/html
+      - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins:ro
+    networks: [wpnet]
+volumes:
+  wp_database:
+  wp_files:
+networks:
+  wpnet: {}

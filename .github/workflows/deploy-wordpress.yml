@@ -37,4 +37,6 @@ jobs:
           test -n "$SSH_USER"
           test -n "$WORDPRESS_PATH"
           test -f wordpress/mu-plugins/headless-vercel-bridge.php
+          ssh -p "$SSH_PORT" -i ~/.ssh/id_ed25519 "$SSH_USER@$SSH_HOST" "mkdir -p '$WORDPRESS_PATH/wp-content/mu-plugins'"
+          scp -P "$SSH_PORT" -i ~/.ssh/id_ed25519 wordpress/mu-plugins/pincode-control-api.php "$SSH_USER@$SSH_HOST:$WORDPRESS_PATH/wp-content/mu-plugins/pincode-control-api.php"
           scp -P "$SSH_PORT" -i ~/.ssh/id_ed25519 wordpress/mu-plugins/headless-vercel-bridge.php "$SSH_USER@$SSH_HOST:$WORDPRESS_PATH/wp-content/mu-plugins/headless-vercel-bridge.php"
