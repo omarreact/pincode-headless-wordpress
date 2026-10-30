@@ -44,7 +44,8 @@
     "vite": "^8.3.0",
     "@vitejs/plugin-react": "^6.1.1",
     "@vitejs/plugin-rsc": "^0.5.38",
-    "react-server-dom-webpack": "19.3.1"
+    "react-server-dom-webpack": "19.3.1",
+    "wrangler": "^4.102.0"
   },
   "description": "Independent PINCODE IT branded Gutenberg and WPGraphQL editorial website"
 }
