@@ -13,14 +13,17 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "verify": "npm run lint && npm run typecheck && npm run test"
+    "verify": "npm run lint && npm run typecheck && npm run test",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "deploy:vinext": "vinext-cloudflare deploy"
   },
   "dependencies": {
     "html-react-parser": "^5.2.10",
     "next": "^16.3.7",
     "next-cloudinary": "^6.19.3",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "sanitize-html": "^2.17.0",
     "server-only": "^0.0.1"
   },
@@ -33,7 +36,15 @@
     "eslint": "^9.39.0",
     "eslint-config-next": "^16.3.7",
     "tailwindcss": "^4.1.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "@cloudflare/vite-plugin": "^2.0.0-beta.sha-52b0dc0e9",
+    "@vinext/cloudflare": "^1.0.1",
+    "cf": "^1.0.0-beta.10",
+    "vinext": "^1.4.0",
+    "vite": "^8.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitejs/plugin-rsc": "^0.5.38",
+    "react-server-dom-webpack": "19.3.1"
   },
   "description": "Independent PINCODE IT branded Gutenberg and WPGraphQL editorial website"
 }
