@@ -28,3 +28,7 @@ jobs:
         run: npx --yes vinext@1.4.0 check
       - name: Compile actual Workers bundle
         run: npm run build:vinext
+      - name: Dry-run exact Headless WP Wrangler deployment
+        run: |
+          mv .cloudflare/output .cf-vinext-output
+          npx wrangler deploy --config wrangler.staging.jsonc --dry-run
