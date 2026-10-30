@@ -1,0 +1,28 @@
+name: Cloudflare Vinext readiness preflight
+on:
+  push:
+    branches:
+      - chore/cloudflare-vinext-compat-20261030
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-vinext:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install without changing dependency files
+        run: npm install --no-audit --no-fund --no-package-lock
+      - name: Existing TypeScript validation
+        run: npm run --if-present typecheck
+      - name: Cloudflare Vinext compatibility check
+        run: npx --yes vinext@1.4.0 check
