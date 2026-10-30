@@ -26,3 +26,5 @@ jobs:
         run: npm run --if-present typecheck
       - name: Cloudflare Vinext compatibility check
         run: npx --yes vinext@1.4.0 check
+      - name: Compile actual Workers bundle
+        run: npm run build:vinext
